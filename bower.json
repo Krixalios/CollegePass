@@ -2,7 +2,7 @@
   "name": "CollegePass",
   "description": "Calculates achieved points based on the exams",
   "main": "main.js",
-  "license": "ISC",
+  "license": "GPL",
   "homepage": "http://www.kgsystem.net",
   "private": true,
   "ignore": [
