@@ -1,0 +1,17 @@
+{
+  "name": "CollegePass",
+  "version": "1.0.0",
+  "description": "Calculates achieved points based on the exams",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "electron main.js",
+	"start_dev": "./node_modules/.bin/.electron main.js"
+  },
+  "author": "Uros Spasojevic",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-packager": "^7.0.3",
+    "electron-prebuilt": "^1.2.2"
+  }
+}

@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="./css/app.style.css">
+
+<!-- top bar with buttons -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-default navbar-btn" ng-click="saveData()">Save</button>
+            <button type="button" class="btn btn-default navbar-btn" ng-click="loadData()">Load</button>
+            <button type="button" class="btn btn-default navbar-btn" ng-click="addSub()">Add subject</button>
+        </div>
+    </div>
+</nav>
+<!-- separator -->
+<br>
+
+<!-- table with data -->
+<table class="table table-striped">
+    <!-- column names -->
+    <tr style="font-weight: bold">
+        <td>Subject</td>
+        <td>1st exam</td>
+        <td>2nd exam</td>
+        <td>1st test</td>
+        <td>2nd test</td>
+        <td>Attendance</td>
+        <td>Total</td>
+        <td>Edit</td>
+    </tr>
+    <!-- angularjs loop for data -->
+    <tr ng-repeat="x in db">
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-text="x.Subject" e-name="Subject" e-form="rowform" e-required>
+                {{x.Subject || 'empty'}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-number="x.FirstCol" e-name="FirstCol" e-form="rowform" e-required>
+                {{x.FirstCol}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-number="x.SecondCol" e-name="SecondCol" e-form="rowform" e-required>
+                {{x.SecondCol}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-number="x.FirstTest" e-name="FirstTest" e-form="rowform" e-required>
+                {{x.FirstTest}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-number="x.SecondTest" e-name="SecondTest" e-form="rowform" e-required>
+                {{x.SecondTest}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs-xeditable holder -->
+            <span editable-number="x.Attendance" e-name="Attendance" e-form="rowform" e-required>
+                {{x.Attendance}}
+            </span>
+        </td>
+        <td>
+            <!-- angularjs mathematical sum of data -->
+            {{x.FirstCol + x.SecondCol + x.FirstTest + x.SecondTest + x.Attendance}}
+        </td>
+        <td style="white-space: nowrap">
+            <!-- angularjs-xeditable form -->
+            <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline">
+                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">Save</button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">Cancel</button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
+                <button class="btn btn-danger" ng-click="removeSub($index)">Del</button>
+            </div>
+        </td>
+    </tr>
+</table>
